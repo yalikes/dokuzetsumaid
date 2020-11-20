@@ -11,6 +11,9 @@ fn main() {
             .read_line(&mut command)
             .expect("read command failed, this must be master's reason!");
         response(&command);
+        if command.len()==0{
+            println!("");
+        }
         command.clear();
     }
 }
