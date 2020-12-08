@@ -1,5 +1,6 @@
-use std::io::{self,Write    };
+use std::io::{self,Write};
 use std::process;
+use std::os;
 fn main() {
     println!("Hello master! Maid detsu.");
     println!("what can I help you?");
@@ -12,7 +13,8 @@ fn main() {
             .expect("read command failed, this must be master's reason!");
         response(&command);
         if command.len()==0{
-            println!("");
+            println!("");    
+            process::exit(0);
         }
         command.clear();
     }
@@ -22,6 +24,9 @@ fn response(command: &String){
     let trimed_command=command.trim();
     if trimed_command=="h" || trimed_command=="help"{
         show_help();
+    }
+    if trimed_command=="exit"{
+        process::exit(0);
     }
 }
 
